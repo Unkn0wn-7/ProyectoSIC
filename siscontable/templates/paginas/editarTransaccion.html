@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block titulo%} Editar Transaccion {% endblock%}
+{%block titulo-secion%} Editar Transacciones existente {%endblock%}
+
+{% block contenido %}
+<div class="row">
+    <div class="col-md-4 offset-md-4">
+        <h4>Editar transaccion</h4>
+        <div class="card bg-dark text-white">
+            <div class="card-body">
+                <form action="/edicionTransaccion/" method="POST">{% csrf_token %}
+                    <input type="hidden" name="transaccion_id" value="{{transaccion.id}}">
+                    <label for="fecha">Seleccionar Fecha:</label>
+                    <div class="form-group">
+                        <input type="date" id="fecha" name="txtfecha" value="{{transaccion.fecha}}" class="form-control" required>
+                    </div>
+                    <br>
+                    <label for="concepto">Concepto</label>
+                    <div class="form-group">
+                        <select name="concepto" id="concepto" class="form-control" required>
+                            <option value="Debe">Debe</option>
+                            <option value="Haber">Haber</option>
+                        </select>
+                    </div>
+                    <br>
+                    <label for="cuenta">Cuenta</label>
+                    <div class="form-group">
+                        <select name="cuenta" id="cuenta" class="form-control" required>
+                            {%for c in cuentas%}
+                                <option value="{{c.nombre}}">{{c.nombre}}</option>
+                            {%endfor%}
+                        </select>
+                    </div>
+                    <br>
+                    <label for="">Monto</label>
+                    <div class="form-group">
+                        <input type="number" id="monto" value="{{transaccion.monto}}" name="monto" class="form-control" 
+                        step="0.01" min="0" required>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success btn-block text-white">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{%endblock%}

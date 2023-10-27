@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block titulo%} Editar Cuenta {% endblock%}
+{%block titulo-secion%} Administrar cuenta {%endblock%}
+{% block contenido %} 
+<div class="row">
+    <div class="col-md-4 offset-md-4">
+        <h4>Editar cuenta</h4>
+        <div class="card bg-dark text-white">
+            
+            <div class="card-body">
+                <form action="/edicionCuenta/" method="POST">{% csrf_token %}
+                    <div class="form-group">
+                        <input type="text" id="txtcodigo" name="txtcodigo" value="{{cuenta.codigo}}" class="form-control" 
+                        placeholder="codigo" maxlength="4" required>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <input type="text" id="txttipo" name="txttipo" value="{{cuenta.tipo}}" class="form-control" 
+                        placeholder="tipo" maxlength="20" required>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <input type="text" id="txtnombre" name="txtnombre" value="{{cuenta.nombre}}" class="form-control" 
+                        placeholder="nombre" maxlength="50" required>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success btn-block text-white">Guardar cuenta</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{%endblock%}

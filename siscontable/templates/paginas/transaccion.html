@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block titulo%} Transacciones {% endblock%}
+{%block titulo-secion%} Administrar Transacciones {%endblock%}
+
+{% block contenido %}
+<div class="row">
+    <div class="col-sm-12 col-md-6 col-lg-8 col-xl-8">
+        <div class="table-responsive pt-5">
+            <table class="table  table-striped table-dark">
+                <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>Fecha</th>
+                        <th>Cuenta</th>
+                        <th>Concepto</th>
+                        <th>Monto</th>
+                        <th>Comando</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {%for t in transacciones%}
+                    <tr>
+                        <td>{{t.id}}</td>
+                        <td>{{t.fecha}}</td>
+                        <td>{{t.nomCuenta}}</td>
+                        <td>{{t.concepto}}</td>
+                        <td>{{t.monto}}</td>
+                        <td><a href="eliminarTransaccion/{{t.id}}" class="btn btn-danger btnEliminacion">Eliminar</a></td>
+                    </tr>
+                    {%endfor%}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4 py-3">
+        <h4>Agregar transaccion</h4>
+        <div class="card bg-dark text-white">
+            <div class="card-body">
+                <form action="/registrarTransaccion/" method="POST">{% csrf_token %}
+                    <label for="fecha">Seleccionar Fecha:</label>
+                    <div class="form-group">
+                        <input type="date" id="fecha" name="txtfecha" class="form-control" required>
+                    </div>
+                    <br>
+                    <label for="concepto">Concepto</label>
+                    <div class="form-group">
+                        <select name="concepto" id="concepto" class="form-control" required>
+                            <option value="Debe">Debe</option>
+                            <option value="Haber">Haber</option>
+                        </select>
+                    </div>
+                    <br>
+                    <label for="cuenta">Cuenta</label>
+                    <div class="form-group">
+                        <select name="cuenta" id="cuenta" class="form-control" required>
+                            {%for c in cuentas%}
+                                <option value="{{c.nombre}}">{{c.nombre}}</option>
+                            {%endfor%}
+                        </select>
+                    </div>
+                    <br>
+                    <label for="">Monto</label>
+                    <div class="form-group">
+                        <input type="number" id="monto" name="monto" class="form-control" 
+                        step="0.01" min="0" required>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success btn-block text-white">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock%}

@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block titulo%} Balance {% endblock%}
+{%block titulo-secion%} Balance general de la empresa {%endblock%}
+
+{% block contenido %}
+<div class="row">
+    <div class="col-sm-12 col-md-6 col-lg-8 col-xl-8">
+        <div class="table-responsive pt-5">
+            <table class="table   table-striped table-dark">
+                <thead>
+                    <tr>
+                        <th>Cuenta</th>
+                        <th>Debe</th>
+                        <th>Haber</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {%for c in cuentas%}
+                    <tr>
+                        <td>{{c.nombre}}</td>
+                        <td>{{c.totalDebe}}</td>
+                        <td>{{c.totalHaber}}</td>
+                    </tr>
+                    {%endfor%}
+                    <tr>
+                        <td><strong>Total</strong></td>
+                        <td><strong>{{total_debe}}</strong></td>
+                        <td><strong>{{total_haber}}</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{%endblock%}

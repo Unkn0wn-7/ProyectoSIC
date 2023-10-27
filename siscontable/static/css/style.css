@@ -1,0 +1,87 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body{
+    min-height: 100vh;
+    background: #C8C0F1;
+    color: black;
+    background-size: cover;
+    background-position: center;
+}
+
+.sos{
+    display: flex;
+    
+}
+.main_content{
+    margin-top: 25px;
+}
+header{
+    background: #33363a;
+}
+.side-bar{
+    background: #110713;
+    width: 250px;
+    left: -250px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    overflow-y: auto;
+    transition: 0.6s ease;
+    transition-property: left;
+}
+header img{
+    width: 100px;
+    margin: 15px;
+    margin-left: 70px;
+    border-radius: 50%;
+    border: 3px solid #000;
+}
+.close-btn{
+    position: absolute;
+    color: #fff;
+    font-size: 23px;
+    right: 0px;
+    margin: 15px;
+    cursor: pointer;
+}
+header h1{
+    text-align: center;
+    font-weight: 500;
+    font-size: 25px;
+    padding-bottom: 13px;
+    font-family: sans-serif;
+    letter-spacing: 2px;
+}
+.menu{
+    width: 100%;
+    margin-top: 30px;
+}
+.menu .item{
+    position: relative;
+    cursor: pointer;
+}
+.menu .item a{
+    color: #fff;
+    font-size: 16px;
+    text-decoration: none;
+    display: block;
+    padding: 5px 30px;
+    line-height: 60px;
+}
+.item i{
+     margin-right: 15px;
+}
+.menu-btn{
+    color: #000;
+    font-size: 35px;
+    cursor: pointer;
+    margin: 25px;
+}
+.side-bar.active{
+    left: 0;
+}

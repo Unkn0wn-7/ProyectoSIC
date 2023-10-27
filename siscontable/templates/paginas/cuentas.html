@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block titulo%} Cuentas {% endblock%}
+{%block titulo-secion%} Catalogo de cuentas {%endblock%}
+
+{% block contenido %} 
+<div class="row">
+    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4 py-3">
+        <h4>Agregar cuenta</h4>
+        <div class="card bg-dark text-white">
+            
+            <div class="card-body">
+                <form action="/registrarCuenta/" method="POST">{% csrf_token %}
+                    <div class="form-group">
+                        <input type="text" id="txtcodigo" name="txtcodigo" class="form-control" 
+                        placeholder="codigo" maxlength="4" required>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <input type="text" id="txttipo" name="txttipo" class="form-control" 
+                        placeholder="tipo" maxlength="20" required>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <input type="text" id="txtnombre" name="txtnombre" class="form-control" 
+                        placeholder="nombre" maxlength="50" required>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success btn-block text-white">Guardar cuenta</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-8 col-xl-8">
+        <div class="table-responsive pt-5">
+            <table class="table table-striped table-dark">
+                <thead-dark>
+                    <tr>
+                        <th>Codigo</th>
+                        <th>Tipo</th>
+                        <th>Nombre</th>
+                        <th colspan="2">Opciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {%for c in cuentas%}
+                    <tr>
+                        <td>{{c.codigo}}</td>
+                        <td>{{c.tipo}}</td>
+                        <td>{{c.nombre}}</td>
+                        <td><a href="editarCuenta/{{c.codigo}}" class="btn btn-info">Editar</a></td>
+                        <td><a href="eliminarCuenta/{{c.codigo}}" class="btn btn-danger btnEliminacion">Eliminar</a></td>
+                    </tr>
+                    {%endfor%}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock%}

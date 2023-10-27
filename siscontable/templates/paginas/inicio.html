@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static%}
+
+
+{% block titulo%} Inicio {% endblock%}
+{%block titulo-secion%} PcSupplies {%endblock%}
+
+{% block contenido %} 
+<div class="row">
+    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4 py-3">
+        <div class="card bg-dark text-light" style="width: 22rem;">
+            <div class="card-body">
+                <h5 class="card-title">Objetivo de la empresa</h5>
+                <p>PcSupplies tienen como objetivo brindar los mejores componentes informáticos
+                     a las personas que los necesiten a un excelente precio.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-8 col-xl-8 py-4">
+        <div class="card text-white bg-white pt-5 " style="width: 40rem;">
+            <img class="card-img-top" src="{% static '/img/org.png'%}" alt="Card image top">
+            <div class="card-body text-dark bg-light">
+                <p class="card-text">Organigrama de la empresa PcSupplies</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock%}
